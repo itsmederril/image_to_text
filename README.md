@@ -23,13 +23,4 @@ Aplikasi web sederhana dan berwarna untuk mengubah gambar menjadi teks menggunak
 4. Tunggu proses OCR selesai.
 5. Salin hasil teks dengan tombol "Copy Text".
 
-## Struktur Folder
-
-```
-imgtotxt/
-├── index.html
-├── style.css
-└── script.js
-```
-
 Sekian terimakasih :))
