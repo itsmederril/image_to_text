@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Image to Text - OCR</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Convert Image to Text</h1>
+      <p>
+        Upload gambar atau paste gambar menggunakan
+        <strong>Ctrl+V</strong> untuk mengkonversi gambar kedalam sebuah teks.
+      </p>
+
+      <!-- Drag and Drop or Paste Area -->
+      <div id="drop-area" class="drop-area">
+        <span>Drag & Drop or Paste Image Here</span>
+      </div>
+
+      <!-- Display Image -->
+      <div id="image-container" class="image-container"></div>
+
+      <!-- Display OCR Result -->
+      <div id="result" class="result"></div>
+      <!-- Progress bar -->
+      <div class="progress-container">
+        <div class="progress-bar" id="progress-bar"></div>
+      </div>
+
+      <!-- Tombol copy -->
+      <button id="copy-btn">Copy Text</button>
+      <div id="copied-popup" class="copied-popup">Copied!</div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5.1.1/dist/tesseract.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
