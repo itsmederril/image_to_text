@@ -27,6 +27,15 @@ const resultDiv = document.getElementById("result");
 const progressBar = document.getElementById("progress-bar");
 const copyBtn = document.getElementById("copy-btn");
 const copiedPopup = document.getElementById("copied-popup");
+const statsDiv = document.getElementById("stats");
+const downloadBtn = document.getElementById("download-btn");
+
+// State awal
+if (statsDiv) {
+  statsDiv.textContent = "Belum ada teks yang dihasilkan.";
+}
+if (copyBtn) copyBtn.disabled = true;
+if (downloadBtn) downloadBtn.disabled = true;
 
 copyBtn.addEventListener("click", () => {
   const text = resultDiv.textContent;
@@ -35,6 +44,21 @@ copyBtn.addEventListener("click", () => {
   setTimeout(() => {
     copiedPopup.classList.remove("show");
   }, 1200);
+});
+
+downloadBtn.addEventListener("click", () => {
+  const text = resultDiv.textContent;
+  if (!text || !text.trim()) return;
+
+  const blob = new Blob([text], { type: "text/plain;charset=utf-8" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = "ocr-result.txt";
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
 });
 
 // Tambahkan input file tersembunyi
@@ -96,6 +120,9 @@ function handleDrop(e) {
 function handleImage(file) {
   if (!file.type.startsWith("image/")) {
     resultDiv.textContent = "Please upload a valid image file.";
+    if (statsDiv) statsDiv.textContent = "";
+    if (copyBtn) copyBtn.disabled = true;
+    if (downloadBtn) downloadBtn.disabled = true;
     return;
   }
   const reader = new FileReader();
@@ -103,6 +130,9 @@ function handleImage(file) {
     imageContainer.innerHTML = `<img src="${e.target.result}" alt="Uploaded Image" style="max-width:100%;"/>`;
     resultDiv.textContent = "Processing...";
     progressBar.style.width = "0%";
+    if (statsDiv) statsDiv.textContent = "";
+    if (copyBtn) copyBtn.disabled = true;
+    if (downloadBtn) downloadBtn.disabled = true;
     runOCR(e.target.result);
   };
   reader.readAsDataURL(file);
@@ -118,11 +148,33 @@ function runOCR(imageSrc) {
     },
   })
     .then(({ data: { text } }) => {
-      resultDiv.textContent = text || "No text detected.";
-      progressBar.style.width = "100%";
+      const cleanText = (text || "").trim();
+
+      if (cleanText) {
+        resultDiv.textContent = cleanText;
+        progressBar.style.width = "100%";
+
+        const charCount = cleanText.length;
+        const wordCount = cleanText.split(/\s+/).filter(Boolean).length;
+
+        if (statsDiv) {
+          statsDiv.textContent = `Kata: ${wordCount} | Karakter: ${charCount}`;
+        }
+        if (copyBtn) copyBtn.disabled = false;
+        if (downloadBtn) downloadBtn.disabled = false;
+      } else {
+        resultDiv.textContent = "No text detected.";
+        progressBar.style.width = "0%";
+        if (statsDiv) statsDiv.textContent = "";
+        if (copyBtn) copyBtn.disabled = true;
+        if (downloadBtn) downloadBtn.disabled = true;
+      }
     })
     .catch((err) => {
       resultDiv.textContent = "Error: " + err.message;
       progressBar.style.width = "0%";
+      if (statsDiv) statsDiv.textContent = "";
+      if (copyBtn) copyBtn.disabled = true;
+      if (downloadBtn) downloadBtn.disabled = true;
     });
 }

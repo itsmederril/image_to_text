@@ -121,3 +121,40 @@ body {
 .copied-popup.show {
   opacity: 1;
 }
+
+/* Stats Text */
+.stats {
+  margin-top: 8px;
+  margin-bottom: 10px;
+  font-size: 0.9rem;
+  color: #185a9d;
+  font-weight: 500;
+}
+
+/* Download Button */
+#download-btn {
+  background: linear-gradient(90deg, #2193b0 0%, #6dd5ed 100%);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(33, 147, 176, 0.1);
+  transition: background 0.2s, transform 0.2s;
+  margin-left: 8px;
+}
+
+#download-btn:hover {
+  background: linear-gradient(90deg, #6dd5ed 0%, #2193b0 100%);
+  transform: scale(1.05);
+}
+
+/* Disabled state for buttons */
+#copy-btn:disabled,
+#download-btn:disabled {
+  opacity: 0.6;
+  cursor: default;
+  transform: none;
+}

@@ -15,6 +15,15 @@ Aplikasi web sederhana dan berwarna untuk mengubah gambar menjadi teks menggunak
 - **Tampilan Colorful & Modern:**  
   Desain menarik dan nyaman digunakan.
 
+## Update
+
+- **Ringkasan teks (kata dan jumlah karakter)**
+  Setelah OCR selesai, di bawah area hasil (result) sekarang muncul Kata: X | Karakter: Y sehingga kita bisa langsung melihat panjang teks yang dihasilkan.
+- **Tombol unduh hasil OCR sebagai format .txt**
+  Di samping tombol Copy Text sekarang ada tombol baru Download Text yang akan mengunduh hasil OCR sebagai file ocr-result.txt.
+- **Pengelolaan status tombol yang lebih rapih**
+  Tombol Copy dan Download otomatis dinonaktifkan saat belum ada teks / saat proses berjalan, dan baru aktif lagi ketika teks berhasil terbaca.
+
 ## Cara Penggunaan
 
 1. **Clone atau Download** repository ini "git clone https://github.com/itsmederril/image_to_text".
