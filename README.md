@@ -17,11 +17,11 @@ Aplikasi web sederhana dan berwarna untuk mengubah gambar menjadi teks menggunak
 
 ## Update
 
-- **Ringkasan teks (kata dan jumlah karakter)**
+- **Ringkasan teks (kata dan jumlah karakter):**
   Setelah OCR selesai, di bawah area hasil (result) sekarang muncul Kata: X | Karakter: Y sehingga kita bisa langsung melihat panjang teks yang dihasilkan.
-- **Tombol unduh hasil OCR sebagai format .txt**
+- **Tombol unduh hasil OCR sebagai format .txt:**
   Di samping tombol Copy Text sekarang ada tombol baru Download Text yang akan mengunduh hasil OCR sebagai file ocr-result.txt.
-- **Pengelolaan status tombol yang lebih rapih**
+- **Pengelolaan status tombol yang lebih rapih:**
   Tombol Copy dan Download otomatis dinonaktifkan saat belum ada teks / saat proses berjalan, dan baru aktif lagi ketika teks berhasil terbaca.
 
 ## Cara Penggunaan
@@ -33,3 +33,4 @@ Aplikasi web sederhana dan berwarna untuk mengubah gambar menjadi teks menggunak
 5. Salin hasil teks dengan tombol "Copy Text".
 
 Sekian terimakasih :))
+
